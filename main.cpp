@@ -1,24 +1,60 @@
-#include <stdio.h>
-template <typename T>
-T Min(T a, T b) {
-	if (a >= b)
+#include <functional>
+
+typedef void (*PFunc)(int*);
+
+void RandomDigits(int* num) {
+	srand(time(nullptr));
+	int randNum = rand() % 6 + 1;
+
+	if (randNum % 2 == *num)
 	{
-		return static_cast<T>(b);
+		printf("%d : 正解\n", randNum);
 	}
-	return  static_cast<T>(a);
-}
-template <>
-char Min<char>(char a, char b) {
-	printf("数字は代入出来ません\n");
-	return 0;
+	else
+	{
+		printf(" %d : 不正解\n", randNum);
+	}
 }
 
+// 待ち時間設定 & 入力された値を渡す
+void SetTime(std::function<int()>p, int second) {
+	printf("抽選中...\n");
+	Sleep(second * 1000);
+
+	p();
+}
 
 int main(void) {
-	printf("%d\n", Min<int>(10, 5));
-	printf("%f\n", Min<float>(1.0f, 5.0f));
-	printf("%f\n", Min<double>(1.0, 5.0));
-	Min<char>('1', '5');
+	// ユーザ入力
+	int answer;
+	while (true)
+	{
+		printf("偶数なら0,奇数なら1を入力してください\n");
+		scanf_s("%d", &answer); //値の入力をしてもらう
+		if (answer == 0 || answer == 1) //入力された値が指定したものか確認
+		{
+			break;
+		}
+		else //違うなら返す
+		{
+			printf("0か1かを入力してください\n");
+		}
+	}
+
+	SetTime([answer]() {
+		srand(time(nullptr));
+	int randNum = rand() % 6 + 1;
+	if (randNum % 2 == answer % 2)
+	{
+		printf("%d : 正解\n", randNum);
+	}
+	else
+	{
+		printf("%d : 不正解\n", randNum);
+	}
+	return 0;
+
+		}, 3);
 
 	return 0;
 }
