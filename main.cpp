@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <Windows.h>
 #include <time.h>
+#include <functional>
 
 typedef void (*PFunc)(int*);
 
@@ -19,11 +20,11 @@ void RandomDigits(int* num) {
 }
 
 // ‘Ò‚¿ŠÔİ’è & “ü—Í‚³‚ê‚½’l‚ğ“n‚·
-void SetTime(PFunc p, int answer, int second) {
+void SetTime(std::function<int()>p, int second) {
 	printf("’Š‘I’†...\n");
 	Sleep(second * 1000);
 
-	p(&answer);
+	p();
 }
 
 int main(void) {
@@ -43,10 +44,20 @@ int main(void) {
 		}
 	}
 
+	SetTime([answer]() {
+		srand(time(nullptr));
+	int randNum = rand() % 6 + 1;
+	if (randNum % 2 == answer % 2)
+	{
+		printf("%d : ³‰ğ\n", randNum);
+	}
+	else
+	{
+		printf("%d : •s³‰ğ\n", randNum);
+	}
+	return 0;
 
-	PFunc p;
-	p = RandomDigits;
-	SetTime(p, answer, 3);
+		}, 3);
 
 	return 0;
 }
