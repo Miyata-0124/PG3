@@ -5,28 +5,6 @@
 
 typedef void (*PFunc)(int*);
 
-void RandomDigits(int* num) {
-	srand(time(nullptr));
-	int randNum = rand() % 6 + 1;
-
-	if (randNum % 2 == *num)
-	{
-		printf("%d : 正解\n", randNum);
-	}
-	else
-	{
-		printf(" %d : 不正解\n", randNum);
-	}
-}
-
-// 待ち時間設定 & 入力された値を渡す
-void SetTime(std::function<int()>p, int second) {
-	printf("抽選中...\n");
-	Sleep(second * 1000);
-
-	p();
-}
-
 int main(void) {
 	// ユーザ入力
 	int answer;
@@ -44,20 +22,31 @@ int main(void) {
 		}
 	}
 
-	SetTime([answer]() {
-		srand(time(nullptr));
-	int randNum = rand() % 6 + 1;
-	if (randNum % 2 == answer % 2)
-	{
-		printf("%d : 正解\n", randNum);
-	}
-	else
-	{
-		printf("%d : 不正解\n", randNum);
-	}
-	return 0;
+	// 待ち時間設定 & 入力された値を渡す
+	std::function<void(std::function<void()>p, int second)>SetTimer = [=](std::function<void()>p, int second) {
+		printf("抽選中...\n"); //分かりやすく文字を描画
+		Sleep(second * 1000); //設定した値を入れて秒数セット
 
-		}, 3);
+		p();
+	};
+
+	// 正解,不正解の判断
+	std::function<void()>RandomDigits = [answer]() {
+		//乱数の取得
+		srand(time(nullptr));
+		int randNum = rand() % 6 + 1;
+		// 判定 同じ値なら正解とする
+		if (randNum % 2 == answer)
+		{
+			printf("正解");
+		}
+		else
+		{
+			printf("不正解");
+		}
+	};
+	
+	SetTimer(RandomDigits, 3);
 
 	return 0;
 }
