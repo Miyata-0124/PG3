@@ -48,5 +48,6 @@ int main(void) {
 	
 	SetTimer(RandomDigits, 3);
 
+	system("pause");
 	return 0;
 }
