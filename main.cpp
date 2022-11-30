@@ -50,13 +50,15 @@ void Create(Cell* head, int num)
 	// 最後尾にポインタを代入
 	head->next = createCell;
 }
-
+// 一覧表示の関数
 void Index(Cell* head)
 {
+	// 表示する
 	while (head->next != nullptr)
 	{
 		head = head->next;
 		printf("%d,", head->num);
 	}
-	/*printf("\n");*/
+	// 少しずらす
+	printf("\n");
 }
