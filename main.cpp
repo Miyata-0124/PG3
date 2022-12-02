@@ -20,30 +20,49 @@ void Index(Cell *endCell);
 Cell* GetInsertCellAddress(Cell * endCell,int iterator);
 
 int main() {
+
+	int iterator;
+	int inputValue;
+	Cell* insertCell;
+
+	int scene = 0;
+
 	//先頭セルの宣言
 	Cell head;
 	head.next = nullptr;
 	head.prev = nullptr;
 
-	// 宣言
-	list<int> operater{ };
-	list<int>::iterator itr;
-
-	printf("[要素の操作]\n");
-	printf("1. 要素表示\n2. 要素の挿入\n3. 要素の編集\n4. 要素の削除\n5. 要素の並び替え\n");
-	printf("-----------------------\n");
-
-	
-	
-	//int iterator;
-	//int inputValue;
-	//Cell* insertCell;
-
-	////先頭セルの宣言
-	//Cell head;
-	//head.next = nullptr;
-	//head.prev = nullptr;
-
+	switch (scene)
+	{
+	// 初期画面
+	case 0:
+		printf("[要素の操作]\n");
+		printf("1.表示\n");
+		printf("2.挿入\n");
+		printf("3.編集\n");
+		printf("4.削除\n");
+		printf("5.並び替え\n");
+		printf("-----------\n\n");
+		printf("操作選択\n");
+		scanf_s("%d", &scene);
+		break;
+	// 表示
+	case 1:
+		printf("表示");
+		break;
+	// 挿入
+	case 2:
+		break;
+	// 編集
+	case 3:
+		break;
+	// 削除
+	case 4:
+		break;
+	// 並び替え
+	case 5:
+		break;
+	}
 	//while (1) {
 	//	printf("何処の後ろに挿入しますか？\n");
 	//	scanf_s("%d", &iterator);
