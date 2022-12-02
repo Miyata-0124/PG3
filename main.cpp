@@ -1,19 +1,20 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 // 単方向リストの構造体
 typedef struct Cell {
-	int num;
+	char num[8];
 	struct Cell* next;
 } Cell;
 
 //データ追加の関数
-void Create(Cell *head, int num);
+void Create(Cell *head, const char *num);
 //一覧表示の関数
 void Index(Cell *head);
 
 int main() {
-	int num;
+	char num[8];
 	// 先頭のセル
 	Cell head;
 	head.next = nullptr;																																																																																																																																																																																																																																																																																																																																																																																																																																																																																
@@ -21,7 +22,7 @@ int main() {
 	while (true) {
 		printf("好きな値を入力 : ");
 
-		scanf_s("%d", &num);
+		scanf_s("%s", num, 8);
 
 		Create(&head, num);
 
@@ -32,14 +33,15 @@ int main() {
 }
 
 //データ追加の関数
-void Create(Cell* head, int num)
+void Create(Cell* head, const char *num)
 {
 	// 新規作成
 	Cell *createCell;
 	// メモリ確保
 	createCell = (Cell*)malloc(sizeof(Cell));
 
-	createCell->num = num;
+	strcpy_s(createCell->num, 8, num);
+
 	createCell->next = nullptr;
 
 	// 最後尾を検索
@@ -57,7 +59,7 @@ void Index(Cell* head)
 	while (head->next != nullptr)
 	{
 		head = head->next;
-		printf("%d,", head->num);
+		printf("%s,", head->num);
 	}
 	// 少しずらす
 	printf("\n");
