@@ -7,6 +7,7 @@ using namespace std;
 // 双方向リストの構造体
 typedef struct Cell {
 	int val;
+	char str[8];
 	struct Cell* prev;
 	struct Cell* next;
 
@@ -26,43 +27,66 @@ int main() {
 	Cell* insertCell;
 
 	int scene = 0;
+	int control = 0;
 
 	//先頭セルの宣言
 	Cell head;
 	head.next = nullptr;
 	head.prev = nullptr;
-
-	switch (scene)
+	while (true)
 	{
-	// 初期画面
-	case 0:
-		printf("[要素の操作]\n");
-		printf("1.表示\n");
-		printf("2.挿入\n");
-		printf("3.編集\n");
-		printf("4.削除\n");
-		printf("5.並び替え\n");
-		printf("-----------\n\n");
-		printf("操作選択\n");
-		scanf_s("%d", &scene);
-		break;
-	// 表示
-	case 1:
-		printf("表示");
-		break;
-	// 挿入
-	case 2:
-		break;
-	// 編集
-	case 3:
-		break;
-	// 削除
-	case 4:
-		break;
-	// 並び替え
-	case 5:
-		break;
+		switch (scene)
+		{
+			// 初期画面
+		case 0:
+			printf("[要素の操作]\n");
+			printf("1.表示\n");
+			printf("2.挿入\n");
+			printf("3.編集\n");
+			printf("4.削除\n");
+			printf("5.並び替え\n");
+			printf("-----------\n\n");
+			printf("操作選択\n");
+			scanf_s("%d", &scene);
+			break;
+			// 表示
+		case 1:
+			switch (control)
+			{
+			case 0:
+				printf("[要素の表示]\n");
+				printf("1.一覧表示\n");
+				printf("2.順番を指定して要素を表示\n");
+				printf("0.要素操作に戻る\n");
+				scanf_s("%d", control);
+				break;
+			case 1:
+				printf("[要素一覧]\n");
+				Index(&head);
+				printf("----------------\n");
+				printf("0.初期に戻る\n");
+				scanf_s("%d", &control);
+				break;
+			case 2:
+				break;
+			}
+			
+			break;
+			// 挿入
+		case 2:
+			break;
+			// 編集
+		case 3:
+			break;
+			// 削除
+		case 4:
+			break;
+			// 並び替え
+		case 5:
+			break;
+		}
 	}
+	
 	//while (1) {
 	//	printf("何処の後ろに挿入しますか？\n");
 	//	scanf_s("%d", &iterator);
@@ -99,20 +123,17 @@ void Create(Cell* currentCell, int val)
 // 一覧表示の関数
 void Index(Cell* endCell)
 {
-	int no = 1;
 	// 表示する
+	int num = 0;
 	while (endCell->next != nullptr)
 	{
 		endCell = endCell->next;
-		printf("%d", no);
-		printf("%p", endCell->prev);
-		printf("%5d", endCell->val);
-		printf("(%p)", endCell);
-		printf("%p\n", endCell->next);
-		no++;
+		printf("%s,", endCell->str);
+		num++;
 	}
 	// 少しずらす
 	printf("\n");
+	printf("要素数:%d\n", num);
 }
 
 Cell* GetInsertCellAddress(Cell* endCell, int iterator)
