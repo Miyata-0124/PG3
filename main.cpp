@@ -44,26 +44,23 @@ int main() {
 	int year;
 	while (true)
 	{
+		// 追加した要素を削除する処理
+		for (list<const char*>::iterator itr = station.begin(); itr != station.end(); itr++)
+		{
+			// それぞれを削除する
+			if (*itr == "Nisinippori" || *itr == "TakanawaGateWay")
+			{
+				station.erase(itr);
+				break;
+			}
+		}
+
 		printf("0.1970年,1.2019年,2.2022年\n");
 		printf("先頭番号を選択してください\n");
 		printf("年代 : ");
 
 		scanf_s("%d", &year);
-		// 追加した要素を削除する
-		for (list<const char*>::iterator itr = station.begin(); itr != station.end(); itr++)
-		{
-			// それぞれを削除する
-			if (*itr == "Nisinippori"||*itr=="TakanawaGateWay")
-			{
-				station.erase(itr);
-				break;
-			}
-			/*if (*itr == "TakanawaGateWay")
-			{
-				station.erase(itr);
-				break;
-			}*/
-		}
+		
 
 		// 要素を追加する処理
 		// 最初から最後になるまで繰り返す
