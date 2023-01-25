@@ -6,10 +6,9 @@
 using namespace std;
 
 int main() {
+	TestSingleton* testSingleton = TestSingleton::GetInstance();
+	//Žg—p‚·‚é
 
-	Test* test_ = Test::GetInstance();
-	
-	printf("%d",test_);
 	system("pause");
 	return 0;
 }
