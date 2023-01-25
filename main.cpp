@@ -6,9 +6,19 @@
 using namespace std;
 
 int main() {
-	TestSingleton* testSingleton = TestSingleton::GetInstance();
-	//使用する
-
-	system("pause");
+	int sceneNo = 0;
+	while (true)
+	{
+		//インスタンスの取得
+		SceneManager* scene = SceneManager::GetInstance();
+		//使用
+		scene->ChangeScene(sceneNo);
+		sceneNo += 1;
+		if (sceneNo == 4)
+		{
+			sceneNo = 0;
+		}
+		system("pause");
+	}
 	return 0;
 }

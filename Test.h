@@ -1,18 +1,25 @@
 #pragma once
 
-class TestSingleton final// 継承の禁止
+class SceneManager final// 継承の禁止
 {
 private:
 	// コンストラクタをprivateに
-	TestSingleton();
+	SceneManager();
 	// デストラクタをprivateに
-	~TestSingleton();
-public:
-	//コピーコンストラクタを無効
-	TestSingleton(const TestSingleton& obj) = delete;
-	// 代入演算子を無効
-	TestSingleton& operator=(const TestSingleton& obj) = delete;
+	~SceneManager();
 
-	static TestSingleton* GetInstance();
+private:
+
+public:
+	// シーン切り替え用
+	void ChangeScene(int sceneNo);
+
+	//コピーコンストラクタを無効
+	SceneManager(const SceneManager& obj) = delete;
+	// 代入演算子を無効
+	SceneManager& operator=(const SceneManager& obj) = delete;
+public:
+	//　アクセス出来るようにする
+	static SceneManager* GetInstance();
 };
 
