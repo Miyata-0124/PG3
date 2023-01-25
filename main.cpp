@@ -1,21 +1,19 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <iostream>
 #include <list>
 #include <vector>
-#include "Enemy.h"
+#include "Circle.h"
+#include "Rectangle.h"
 using namespace std;
 
 int main() {
-	int stateNo;
-	Enemy* enemy = new Enemy;
-	while (true)
-	{
-		//手動で確認する出来ていれば対応したものが出てくる?
-		printf("行動制御が出来ているか確認する(0~2)\n");
-		scanf_s("%d", &stateNo);
-		//呼び出し
-		enemy->Update(stateNo);
-	}
+	Circle* circle = new Circle;
+	Rectangle* rectangle = new Rectangle;
+	circle->Size();
+	circle->Draw();
+	rectangle->Size();
+	rectangle->Draw();
 	system("pause");
 	return 0;
 }
