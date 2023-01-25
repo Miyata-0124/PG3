@@ -24,16 +24,17 @@ int main() {
 
 	if (selection == 0)
 	{
-		enemy2->isAlive = false;
+		enemy1->isAlive = false;
 	}
 	else
 	{
-		enemy2->isAlive = true;
+		enemy1->isAlive = true;
 	}
 	// Å‰‚É“G‚Ì”‚ğo‚µ‚Ä‚¨‚­
 	printf("\n");
 	printf("‰Šú‚Ì“G”‚Í : ");
 	cout << Enemy::enemyCount << endl;
+
 	// 1‚Ì“G‚ÌAlive‚ªfalse‚É‚È‚Á‚½‚ç‘SˆõÁ‚¦‚é
 	if (Enemy::isAlive == false)
 	{
@@ -41,6 +42,7 @@ int main() {
 		delete enemy2;
 		delete enemy3;
 	}
+
 	// “G‚ª€‚ñ‚Å‚é‚È‚çenemyCount‚ª0‚É‚È‚é?
 	printf("c‚è‚Ì“G”‚Í : ");
 	cout << Enemy::enemyCount << endl;
