@@ -2,7 +2,7 @@
 #include <iostream>
 #include <list>
 #include <vector>
-#include "Test.h"
+#include "SceneManager.h"
 using namespace std;
 
 int main() {
