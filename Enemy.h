@@ -1,12 +1,16 @@
 #pragma once
-
-class Enemy 
-{
-private:
-
+class Enemy {
 public:
-	static int enemyCount;
-	static bool isAlive;
-	Enemy() { enemyCount++; }
-	~Enemy() { enemyCount--; }
+	// メンバ関数
+	// 接近
+	void Move();
+	// 射撃
+	void Shot();
+	// 離脱
+	void ReMove();
+	// 更新
+	void Update(int i);
+private:
+	// メンバ関数ポインタのテーブル
+	static void (Enemy::* state[])();
 };
