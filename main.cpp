@@ -21,7 +21,7 @@ int main() {
 		scanf_s("%d", &selection);
 		break;
 	}
-
+	//仮にenemy1(　<-は変更可能 1,2,3　)が死んだ場合
 	if (selection == 0)
 	{
 		enemy1->isAlive = false;
