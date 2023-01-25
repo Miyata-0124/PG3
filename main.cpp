@@ -6,6 +6,7 @@
 using namespace std;
 
 int Enemy::enemyCount;
+bool Enemy::isAlive;
 
 int main() {
 	int selection;
@@ -13,6 +14,7 @@ int main() {
 	Enemy* enemy2 = new Enemy;
 	Enemy* enemy3 = new Enemy;
 
+	//–â“š–³—p‚ÅÁ‚µ‚Ä‚È‚¢‚©Šm”F—p
 	while (true)
 	{
 		printf("“G‚ğ“|‚·‚È‚ç 0 c‚·‚È‚ç 1 ‚ğ“ü—Í\n");
@@ -22,18 +24,18 @@ int main() {
 
 	if (selection == 0)
 	{
-		enemy1->isAlive = false;
+		enemy2->isAlive = false;
 	}
 	else
 	{
-		enemy1->isAlive = true;
+		enemy2->isAlive = true;
 	}
 	// Å‰‚É“G‚Ì”‚ğo‚µ‚Ä‚¨‚­
 	printf("\n");
 	printf("‰Šú‚Ì“G”‚Í : ");
 	cout << Enemy::enemyCount << endl;
 	// 1‚Ì“G‚ÌAlive‚ªfalse‚É‚È‚Á‚½‚ç‘SˆõÁ‚¦‚é
-	if (enemy1->isAlive == false)
+	if (Enemy::isAlive == false)
 	{
 		delete enemy1;
 		delete enemy2;

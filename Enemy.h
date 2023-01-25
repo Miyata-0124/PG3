@@ -6,7 +6,7 @@ private:
 
 public:
 	static int enemyCount;
-	bool isAlive = true;
+	static bool isAlive;
 	Enemy() { enemyCount++; }
 	~Enemy() { enemyCount--; }
 };
