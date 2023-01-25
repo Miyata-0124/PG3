@@ -1,7 +1,11 @@
 #include "Test.h"
 
-Test* Test::GetInstance()
+TestSingleton::~TestSingleton()
 {
-    static Test instance;
-    return &instance;
+}
+
+TestSingleton* TestSingleton::GetInstance()
+{
+	static TestSingleton instance;
+	return &instance;
 }
